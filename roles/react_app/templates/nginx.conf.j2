@@ -1,0 +1,13 @@
+server {
+    listen 3000;
+    server_name localhost;  # Change this to your domain or IP
+
+    location / {
+        root weatherapp/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Add any additional Nginx configuration here
+}
+

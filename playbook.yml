@@ -1,0 +1,8 @@
+---
+- name: Setup Web Server and Deploy React App
+  hosts: web_servers
+  become: true
+  roles:
+    - common
+    - react_app
+

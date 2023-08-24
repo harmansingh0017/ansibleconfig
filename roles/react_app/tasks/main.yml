@@ -1,0 +1,64 @@
+- name: Clone React app repository from GitHub
+  git:
+    repo: https://github.com/sing0017/real-chat-app.git
+    dest: /chatapp  # The destinationere you want to clone the repository
+    version: main  # The branch or tag you want to clone (e.g., master, main)
+  become: true  # To run the task with elevated privileges
+  become_user: harmansingh  # The user to execute the task as
+  args:
+    force: yes
+
+
+- name: Install Node.js and npm
+  yum:
+    name:
+      - nodejs
+    state: present
+
+- name: Install nodemon globally
+  command: npm install -g nodemon
+  become: yes
+
+
+
+- name: Install app dependencies
+  become: yes
+  become_user: harmansingh
+  command: npm install
+  args:
+    chdir: /chatapp/client
+
+
+- name: Install app dependencies
+  become: yes
+  become_user: harmansingh
+  command: npm install
+  args:
+    chdir: /chatapp/server
+
+
+
+
+- name: Build the client side
+  command: npm run build
+  args:
+    chdir: /chatapp/client
+  become_user: harmansingh
+
+
+
+- name: Run the server on port 5000
+  command: node index.js
+  args:
+    chdir: /chatapp/server/
+  async: 300
+  poll: 0
+
+
+- name: Run the server on port 3000
+  command: npm start
+  args:
+    chdir: /chatapp/client
+  async: 300
+  poll: 0
+
