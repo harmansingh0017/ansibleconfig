@@ -27,7 +27,7 @@ To get started with this Ansible configuration, follow these steps:
 
 4. **Review and Update the Playbook**
 
-   Open the `playbooks/chat_app.yml` playbook file and review its content. This playbook is responsible for deploying the chat application to the target server. Make any necessary modifications to suit your specific application requirements.
+   Open the `roles/react_app/tasks/main.yml` playbook file and review its content. This playbook is responsible for deploying the chat application to the target server. Make any necessary modifications to suit your specific application requirements.
 
 5. **Run the Playbook**
 
