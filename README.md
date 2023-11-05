@@ -24,3 +24,32 @@ To get started with this Ansible configuration, follow these steps:
 
    ```bash
    ansible web -m ping -i inventory/hosts
+
+4. **Review and Update the Playbook**
+
+   Open the `playbooks/chat_app.yml` playbook file and review its content. This playbook is responsible for deploying the chat application to the target server. Make any necessary modifications to suit your specific application requirements.
+
+5. **Run the Playbook**
+
+   Once you are satisfied with the playbook configuration, execute it using the following command:
+
+   ```bash
+   ansible-playbook -i inventory/hosts playbooks/chat_app.yml
+
+This will deploy and configure the chat application on the target CentOS 7 server.
+
+The chat application should now be successfully deployed and configured on the target server.
+
+## Playbooks
+
+### chat_app.yml
+
+This playbook handles the deployment of the chat application to the target server. It performs the following tasks:
+
+1. Installs base dependencies like Node.js
+2. Copies the application code to the target server
+3. Installs application dependencies using npm
+4. Configures and starts the React application
+
+
+
