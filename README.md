@@ -36,9 +36,9 @@ To get started with this Ansible configuration, follow these steps:
    ```bash
    ansible-playbook -i inventory/hosts playbooks/chat_app.yml
 
-  This will deploy and configure the chat application on the target CentOS 7 server.
+   This will deploy and configure the chat application on the target CentOS 7 server.
 
-  The chat application should now be successfully deployed and configured on the target server.
+   The chat application should now be successfully deployed and configured on the target server.
 
 ## Playbooks
 
