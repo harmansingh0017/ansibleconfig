@@ -1,4 +1,4 @@
-v# Ansible Configuration
+# Ansible Configuration
 
 This repository contains Ansible playbooks and roles for configuring servers and services.
 
@@ -41,16 +41,7 @@ To get started with this Ansible configuration, follow these steps:
 
    The chat application should now be successfully deployed and configured on the target server.
 
-## Playbooks
-
-### chat_app.yml
-
-This playbook handles the deployment of the chat application to the target server. It performs the following tasks:
-
-1. Installs base dependencies like Node.js
-2. Copies the application code to the target server
-3. Installs application dependencies using npm
-4. Configures and starts the React application
+ 
 
 
 
