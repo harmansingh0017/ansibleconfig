@@ -1,4 +1,4 @@
-# Ansible Configuration
+v# Ansible Configuration
 
 This repository contains Ansible playbooks and roles for configuring servers and services.
 
@@ -34,7 +34,8 @@ To get started with this Ansible configuration, follow these steps:
    Once you are satisfied with the playbook configuration, execute it using the following command:
 
    ```bash
-   ansible-playbook -i inventory/hosts playbooks/chat_app.yml```
+   ansible-playbook -i inventory/hosts playbooks/chat_app.yml
+   ```
 
    This will deploy and configure the chat application on the target CentOS 7 server.
 
