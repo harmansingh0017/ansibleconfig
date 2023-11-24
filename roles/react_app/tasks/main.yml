@@ -7,7 +7,7 @@
 
 - name: Clone React app repository from GitHub
   git:
-    repo: https://github.com/WebDevSimplified/Whatsapp-Clone.git
+    repo: https://github.com/harmansingh0017/real-chat-app.git
     dest: /chatapp  # The destinationere you want to clone the repository
     version: main  # The branch or tag you want to clone (e.g., master, main)
   become: yes  # To run the task with elevated privileges
