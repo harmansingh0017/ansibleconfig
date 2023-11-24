@@ -1,29 +1,40 @@
+- name: Create /chatapp directory
+  file:
+    path: /chatapp
+    state: directory
+    owner: harman
+    group: harman
+
 - name: Clone React app repository from GitHub
   git:
-    repo: https://github.com/sing0017/real-chat-app.git
+    repo: https://github.com/WebDevSimplified/Whatsapp-Clone.git
     dest: /chatapp  # The destinationere you want to clone the repository
     version: main  # The branch or tag you want to clone (e.g., master, main)
-  become: true  # To run the task with elevated privileges
-  become_user: harmansingh  # The user to execute the task as
+  become: yes  # To run the task with elevated privileges
+  become_user: harman  # The user to execute the task as
   args:
     force: yes
 
-
-- name: Install Node.js and npm
+- name: Add EPEL repo
   yum:
-    name:
+    name: epel-release
+  become: yes
+
+- name: Install Node.js
+  yum: 
+    name: 
       - nodejs
-    state: present
+      - npm
+  become: yes
 
 - name: Install nodemon globally
   command: npm install -g nodemon
   become: yes
 
-
-
 - name: Install app dependencies
   become: yes
-  become_user: harmansingh
+  become_user: harman
+  become: true
   command: npm install
   args:
     chdir: /chatapp/client
@@ -31,7 +42,8 @@
 
 - name: Install app dependencies
   become: yes
-  become_user: harmansingh
+  become_user: harman
+  become: true
   command: npm install
   args:
     chdir: /chatapp/server
@@ -43,7 +55,8 @@
   command: npm run build
   args:
     chdir: /chatapp/client
-  become_user: harmansingh
+  become_user: harman
+  become: true
 
 
 
@@ -61,4 +74,3 @@
     chdir: /chatapp/client
   async: 300
   poll: 0
-
