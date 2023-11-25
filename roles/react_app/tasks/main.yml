@@ -7,7 +7,7 @@
 
 - name: Clone React app repository from GitHub
   git:
-    repo: https://github.com/harmansingh0017/r1.git
+    repo: https://github.com/harmansingh0017/photogallery-react-app.git
     dest: /photoapp  # The destinationere you want to clone the repository
     version: master  # The branch or tag you want to clone (e.g., master, main)
   become: yes  # To run the task with elevated privileges
