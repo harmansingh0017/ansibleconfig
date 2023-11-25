@@ -1,6 +1,6 @@
-- name: Create /chatapp directory
+- name: Create /photoapp directory
   file:
-    path: /chatapp
+    path: /photoapp
     state: directory
     owner: harman
     group: harman
@@ -8,7 +8,7 @@
 - name: Clone React app repository from GitHub
   git:
     repo: https://github.com/harmansingh0017/r1.git
-    dest: /chatapp  # The destinationere you want to clone the repository
+    dest: /photoapp  # The destinationere you want to clone the repository
     version: master  # The branch or tag you want to clone (e.g., master, main)
   become: yes  # To run the task with elevated privileges
   become_user: harman  # The user to execute the task as
@@ -27,29 +27,29 @@
       - npm
   become: yes
 
-- name: Install app dependencies
+- name: Install client side dependencies
   become: yes
   become_user: harman
   become: true
   command: npm install
   args:
-    chdir: /chatapp/client
+    chdir: /photoapp/client
 
 
-- name: Install app dependencies
+- name: Install api side dependencies
   become: yes
   become_user: harman
   become: true
   command: npm install
   args:
-    chdir: /chatapp/api
+    chdir: /photoapp/api
 
 
 
-- name: Run the server on port 5000
+- name: Run the server on port 7000
   command: npm start
   args:
-    chdir: /chatapp/api/
+    chdir: /photoapp/api/
   async: 300
   poll: 0
 
@@ -57,6 +57,6 @@
 - name: Run the server on port 3000
   command: npm start
   args:
-    chdir: /chatapp/client
+    chdir: /photoapp/client
   async: 300
   poll: 0
