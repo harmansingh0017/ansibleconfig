@@ -1,47 +1,58 @@
-# Ansible Configuration
+# PhotoApp Deployment with Azure DevOps on CentOS VM
 
-This repository contains Ansible playbooks and roles for configuring servers and services.
+## Overview
 
-## About
+This Ansible playbook, combined with Azure DevOps, automates the deployment of a PhotoApp application, consisting of a React app and an API, on a CentOS VM. The playbook, when integrated with Azure DevOps, performs the following tasks:
 
-This Ansible configuration was designed for deploying a real-time chat application with React on a CentOS 7 target server. The automation and configuration are executed from an Ubuntu control machine using Ansible.
+1. **Create /photoapp directory:**
+   - Creates the `/photoapp` directory with specified ownership.
 
-## Getting Started
+2. **Clone React app repository from GitHub:**
+   - Clones the React app repository from [https://github.com/harmansingh0017/photogallery-react-app.git](https://github.com/harmansingh0017/photogallery-react-app.git) into the `/photoapp` directory.
 
-To get started with this Ansible configuration, follow these steps:
+3. **Add EPEL repo:**
+   - Adds the EPEL repository to the system.
 
-1. **Ensure Ansible is installed on the Ubuntu control node.**
+4. **Install Node.js:**
+   - Installs Node.js and npm packages.
 
-   Make sure you have Ansible installed on the Ubuntu machine that will serve as the control node. You can install Ansible by following the instructions in the [official Ansible documentation](https://docs.ansible.com/ansible/latest/installation_guide/index.html).
+5. **Install client side dependencies:**
+   - Installs app dependencies for the client side of the application.
 
-2. **Update the Inventory File (inventory/hosts)**
+6. **Install API side dependencies:**
+   - Installs app dependencies for the API side of the application.
 
-   Edit the `inventory/hosts` file to include the IP address or hostname of the CentOS 7 target server. Make sure to define the connection parameters, such as the SSH user, for the target server in this inventory file.
+7. **Run the API server on port 7000:**
+   - Starts the API server on port 7000 asynchronously.
 
-3. **Ping the Target Server**
+8. **Run the client server on port 3000:**
+   - Starts the client server on port 3000 asynchronously.
 
-   To verify connectivity with the target server, use the following Ansible command:
+## Usage with Azure DevOps
 
+1. **Set up Azure DevOps Pipeline:**
+   - Configure an Azure DevOps pipeline to execute the Ansible playbook on your CentOS VM.
+
+2. **Clone the Ansible playbook repository:**
    ```bash
-   ansible web -m ping -i inventory/hosts
-
-4. **Review and Update the Playbook**
-
-   Open the `roles/react_app/tasks/main.yml` playbook file and review its content. This playbook is responsible for deploying the chat application to the target server. Make any necessary modifications to suit your specific application requirements.
-
-5. **Run the Playbook**
-
-   Once you are satisfied with the playbook configuration, execute it using the following command:
-
-   ```bash
-   ansible-playbook -i inventory/hosts playbooks/chat_app.yml
+   git clone https://github.com/your-repo-url.git
+   cd your-repo-directory
    ```
 
-   This will deploy and configure the chat application on the target CentOS 7 server.
+3. **Configure Azure DevOps Pipeline:**
+   - Define the pipeline YAML file to run the Ansible playbook.
 
-   The chat application should now be successfully deployed and configured on the target server.
+4. **Run the Azure DevOps Pipeline:**
+   - Trigger the Azure DevOps pipeline to execute the deployment.
 
- 
+5. **Access the PhotoApp:**
+   - After successful execution, the PhotoApp should be accessible.
+   - Client: [http://your-server-ip:3000](http://your-server-ip:3000)
+   - API: [http://your-server-ip:7000](http://your-server-ip:7000)
 
+## Notes
 
+- Adjust playbook variables such as repository URL, destination directory, and user ownership according to your environment.
+- This playbook assumes a Linux environment with `yum` package manager. Modify package management tasks for other distributions.
 
+Feel free to customize the playbook and readme to fit your specific deployment requirements within the Azure DevOps environment.
